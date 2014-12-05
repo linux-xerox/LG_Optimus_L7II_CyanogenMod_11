@@ -3,7 +3,7 @@
 #AUDIO_POLICY_TEST := true
 #ENABLE_AUDIO_DUMP := true
 
-ifneq ($(TARGET_BOOTLOADER_BOARD_NAME),u8825)
+ifneq ($(TARGET_BOOTLOADER_BOARD_NAME),7х27)
 TARGET_HAS_QACT := true
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
