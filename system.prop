@@ -232,6 +232,7 @@ debug.composition.7x25A.type=dyn
 debug.composition.8x25.type=gpu
 debug.composition.n_plus.type=dyn
 debug.hwc.dynThreshold=1.9
+qemu.hw.main_keys=1
 ro.bq.gpu_to_cpu_unsupported=1
 ro.max.fling_velocity=8000
 ro.opengles.version=131072

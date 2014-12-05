@@ -111,5 +111,5 @@ key 231   CALL              WAKE_DROPPED
 # R+ Mapping
 key 172   HOME              WAKE_DROPPED
 # QuickMEMO
-key 225   INFO
+key 225   CAMERA            WAKE_DROPPED
 key 228   CHANNEL_UP

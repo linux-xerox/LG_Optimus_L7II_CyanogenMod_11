@@ -80,14 +80,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/hostapd/hostapd_default.conf::system/etc/hostapd/hostapd_default.conf
 
 # Wlan
-ifneq (exists, $(shell test -d $(TOP)/vendor/qcom/proprietary/wlan/volans && echo exists))
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wlan/wlan.ko:system/lib/modules/wlan.ko \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_wlan_nv.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_fw.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_fw.bin \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_cfg.dat:system/etc/firmware/wlan/volans/WCN1314_cfg.dat \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_cfg.ini:system/etc/firmware/wlan/volans/WCN1314_qcom_cfg.ini
-endif
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -208,24 +206,23 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.vee7 \
-    init.vee7.rc \
-    ueventd.vee7.rc \
-    init.qcom.rc \
-    init.qcom.sh \
-    init.qcom.class_core.sh \
-    init.qcom.class_main.sh \
-    init.qcom.usb.rc \
-    init.qcom.usb.sh \
-    init.vee7.usb.rc \
-    ueventd.qcom.rc \
-    ueventd.vee7.rc \
-    init.target.rc \
-    init.qcom.ril.sh \
-    rmt_storage_recovery \
-    init.recovery.qcom.rc
-
+PRODUCT_COPY_FILES += \
+	device/lge/p715/ramdisk/fstab.vee7:root/fstab.vee7 \
+	device/lge/p715/ramdisk/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+	device/lge/p715/ramdisk/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+	device/lge/p715/ramdisk/init.qcom.rc:root/init.qcom.rc \
+	device/lge/p715/ramdisk/init.qcom.ril.path.sh:root/init.qcom.ril.path.sh \
+	device/lge/p715/ramdisk/init.qcom.sh:root/init.qcom.sh \
+	device/lge/p715/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
+	device/lge/p715/ramdisk/init.qcom.usb.sh:root/init.qcom.usb.sh \
+	device/lge/p715/ramdisk/init.superuser.rc:root/init.superuser.rc \
+	device/lge/p715/ramdisk/init.target.rc:root/init.target.rc \
+	device/lge/p715/ramdisk/init.trace.rc:root/init.trace.rc \
+	device/lge/p715/ramdisk/init.usb.rc:root/init.usb.rc \
+	device/lge/p715/ramdisk/init.vee7.rc:root/init.vee7.rc \
+	device/lge/p715/ramdisk/init.vee7.usb.rc:root/init.vee7.usb.rc \
+	device/lge/p715/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
+	device/lge/p715/ramdisk/init.recovery.qcom.rc:root/init.recovery.qcom.rc 
 
 # Init scripts
 PRODUCT_PACKAGES += \
