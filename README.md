@@ -2,7 +2,7 @@ Optimus L7II CyanogenMod 11 (vee7) by @weritos666 and @Y300-0100
 
 Optimus L3II CyanogenMod 11 (vee3) by @Caio99BR
 
-Weritos Manifests (L9II Project)
+Weritos Manifests (L7II Project)
 Local manifests to build Android for 2nd Gen L-project device
 
 To sync:
