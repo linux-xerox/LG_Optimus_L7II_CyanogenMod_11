@@ -18,8 +18,6 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-
 LOCAL_PATH := device/lge/p715
 
 DEVICE_PACKAGE_OVERLAYS := device/lge/p715/overlay
