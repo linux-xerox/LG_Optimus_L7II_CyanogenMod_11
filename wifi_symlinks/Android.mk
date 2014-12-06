@@ -1,4 +1,4 @@
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),lge_m3s)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),7х27)
 
 LOCAL_PATH := $(call my-dir)
 
