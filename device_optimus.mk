@@ -86,11 +86,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_fw.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_fw.bin \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_cfg.dat:system/etc/firmware/wlan/volans/WCN1314_cfg.dat \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_cfg.ini:system/etc/firmware/wlan/volans/WCN1314_qcom_cfg.ini
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 0789a6c5fe9fa995db5a7093f03fa491504149c1
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory

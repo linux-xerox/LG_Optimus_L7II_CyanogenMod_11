@@ -2,6 +2,10 @@
 <manifest>
 	<remove-project name="CyanogenMod/android_frameworks_native" />
 
+	<project path="kernel/lg/p715/kernel" name="weritos666/kernel_L7_II_KK" revision="master" remote="github"/>
+	<project path="vendor/lge/p715" name="weritos666/proprietary_vendor_LG" revision="master" remote="github"/>
+	<project path="device/lge/p715" name="weritos666/LG_Optimus_L7II_CyanogenMod_11" revision="master" />
+	
 	<project name="legaCyMod/android_hardware_qcom_display-legacy" path="hardware/qcom/display-legacy" remote="github" revision="cm-11.0" />
 	<project path="hardware/qcom/media-legacy" name="Dazzozo/android_hardware_qcom_media-legacy" remote="github" revision="kitkat" />
 	<project path="hardware/atheros/wlan" name="legaCyMod/android_hardware_atheros_wlan" revision="cm-11.0" />
