@@ -371,6 +371,11 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
+
+    # 2014.12.09 Torch perms BY WERITOS
+    chown system camera /sys/devices/platform/i2c-gpio.3/i2c-3/3-0030/brightness_uA
+    chmod 0777          /sys/devices/platform/i2c-gpio.3/i2c-3/3-0030/brightness_uA
+
     #LGE_CHANGE_S 20121218 sangjoo78.lee@le.com improving booting time from V5
     #LGE_CHANGE_S 20121015 minkyu.ha@lge.com Governor change patch for Performance
     chmod 0775 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -750,7 +755,7 @@ service amp_unload /system/bin/amploader -u
     oneshot
 
 # LGE_CHANGE_S, [WiFi][hayun.kim@lge.com], 2013-01-22, Wifi Bring Up
-service p2p_supplicant /system/bin/wpa_supplicant \
+service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -767,7 +772,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets \
@@ -874,6 +879,14 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     group system
     disabled
     oneshot
+
+# LGE_CHANGE_S WERITOS
+	chown system system /system/etc/init.qcom.ftm_module.sh
+	chown system system /system/etc/init.qcom.ftm_module_out.sh
+	chmod 0771 /system/etc/init.qcom.ftm_module.sh
+	chmod 0771 /system/etc/init.qcom.ftm_module_out.sh
+# LGE_CHANGE_S WERITOS
+# 2012.09.29, jaeshick: CONFIG_LGE_WLAN_PATCH - END
 
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
@@ -1049,20 +1062,6 @@ service map1 /system/bin/sdptool add --channel=17 MAS1
     disabled
     oneshot
 #+e LGBT_COMMON_FUNCTION_BRINGUP
-
-service ril-daemon1 /system/bin/rild -c 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_rw system diag qcom_diag log
-
-service post_boot /system/bin/sh /init.qcom.ril.sh
-   class late_start
-   user root
-   disabled
-   oneshot
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
@@ -1362,6 +1361,40 @@ oneshot
 on init
     setprop ro.ssbd.session /dev/block/platform/msm_sdcc.3/by-num/p27
     setprop ro.ssbd.offset 0
+
+
+# RIL permissions fix
+## 2014.12.09 Added by Weritos 
+    chmod 0644 /proc/cmdline
+
+chmod 777 /system/bin/yepdiag
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc qcom_diag log
+
+
+#add support for dsds
+service ril-daemon1 /system/bin/rild -c 1
+    class main
+    socket rild1 stream 660 root radio
+    socket rild-debug1 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+
+
+on property:ro.multi.rild=true
+    start ril-daemon1
+
+#add end
+
+service yepdiag /system/bin/yepdiag
+    class main
+    user root
+    group radio cache inet misc audio
 
 service ssbd /system/bin/ssbd
     class main
