@@ -153,11 +153,7 @@ ro.screen.layout=normal
 #
 debug.enabletr=false
 #
-#System prop for setting the pixel format
-#
-ro.staticwallpaper.pixelformat=RGB_565
 
-#
 #System prop for disabling the meta data mode for encoder
 #
 debug.camcorder.disablemeta=0
@@ -235,9 +231,9 @@ debug.hwc.dynThreshold=1.9
 qemu.hw.main_keys=1
 ro.bq.gpu_to_cpu_unsupported=1
 ro.max.fling_velocity=8000
-ro.opengles.version=131072
 ro.sf.lcd_density=240
 dalvik.vm.heapgrowthlimit=32m
+ro.staticwallpaper.pixelformat=RGB_565
 dalvik.vm.heapsize=64m
 com.qc.hardware=true
 dev.pm.dyn_sample_period=700000

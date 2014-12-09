@@ -22,7 +22,7 @@ LOCAL_PATH := device/lge/p715
 
 DEVICE_PACKAGE_OVERLAYS := device/lge/p715/overlay
 
-PRODUCT_LOCALES := ru_RU
+PRODUCT_LOCALES := en_US
 PRODUCT_LOCALES += hdpi
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -104,18 +104,14 @@ PRODUCT_PACKAGES += \
     tinymix \
     tinyplay
     
-# Display
+# display HALS
 PRODUCT_PACKAGES += \
-    copybit.msm7x27a \
-    gralloc.msm7x27a \
-    hwcomposer.msm7x27a \
-    libc2dcolorconvert \
-    liboverlay \
-    libmemalloc \
-    libtilerenderer \
     libgenlock \
-    libqdutils \
-    libqdMetaData
+    gralloc.msm7x27a \
+    copybit.msm7x27a \
+    libqdMetaData \
+    memtrack.msm7x27a \
+    hwcomposer.msm7x27a
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -153,6 +149,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm7x27a
 
+
+# light hal
+PRODUCT_PACKAGES += \
+    lights.msm7x27a
+
 # Misc
 PRODUCT_PACKAGES += \
     charger \
@@ -161,12 +162,12 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     lights.msm7x27a
 
-# Video
+# Omx
 PRODUCT_PACKAGES += \
-    libI420colorconvert \
-    libstagefrighthw \
     libmm-omxcore \
-    libOmxCore
+    libOmxCore \
+    libstagefrighthw \
+    libdashplayer
 
 # Power Hal
 PRODUCT_PACKAGES += \
