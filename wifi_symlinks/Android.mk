@@ -17,10 +17,10 @@ LOCAL_PATH := $(call my-dir)
 LOCAL_MODULE := wlan.ko
 _symlink := $(PRODUCT_OUT)/system/lib/modules/wlan.ko
 $(_symlink) :
-	@echo "Symlink: $@ -> /system/lib/modules/volans/WCN1314_rf.ko"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/lib/modules/volans/WCN1314_rf.ko $@
+@echo "Symlink: $@ -> /system/lib/modules/volans/WCN1314_rf.ko"
+@mkdir -p $(dir $@)
+@rm -rf $@
+$(hide) ln -sf /system/lib/modules/volans/WCN1314_rf.ko $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(_symlink)
 
@@ -30,10 +30,10 @@ ALL_DEFAULT_INSTALLED_MODULES += $(_symlink)
 LOCAL_MODULE := WCN1314_qcom_cfg.ini
 _symlink := $(PRODUCT_OUT)/system/etc/firmware/wlan/volans/WCN1314_qcom_cfg.ini
 $(_symlink) :
-	@echo "Symlink: $@ -> /data/misc/wifi/WCN1314_qcom_cfg.ini"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /data/misc/wifi/WCN1314_qcom_cfg.ini $@
+@echo "Symlink: $@ -> /data/misc/wifi/WCN1314_qcom_cfg.ini"
+@mkdir -p $(dir $@)
+@rm -rf $@
+$(hide) ln -sf /data/misc/wifi/WCN1314_qcom_cfg.ini $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(_symlink)
 
@@ -43,10 +43,10 @@ ALL_DEFAULT_INSTALLED_MODULES += $(_symlink)
 LOCAL_MODULE := WCN1314_qcom_wlan_nv.bin
 _symlink := $(PRODUCT_OUT)/system/etc/firmware/wlan/volans/WCN1314_qcom_wlan_nv.bin
 $(_symlink) :
-	@echo "Symlink: $@ -> /data/misc/wifi/WCN1314_qcom_wlan_nv.bin"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /data/misc/wifi/WCN1314_qcom_wlan_nv.bin $@
+@echo "Symlink: $@ -> /data/misc/wifi/WCN1314_qcom_wlan_nv.bin"
+@mkdir -p $(dir $@)
+@rm -rf $@
+$(hide) ln -sf /data/misc/wifi/WCN1314_qcom_wlan_nv.bin $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(_symlink)
 
