@@ -66,7 +66,6 @@ KERNEL_EXTERNAL_MODULES:
 	rm -rf $(TARGET_OUT_INTERMEDIATES)/prebuilts
 	cp -a /lib/modules/volans/WCN1314_rf.ko $(TARGET_OUT_INTERMEDIATES)/
 	$(MAKE) -C $(TARGET_OUT_INTERMEDIATES)/prebuilts/WCN1314_rf KERNEL_OUT=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" modules
-	$(MAKE) -C $(TARGET_OUT_INTERMEDIATES)/prebuilts/WCN1314_rf_ftm KERNEL_OUT=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" modules
 	$(TARGET_OBJCOPY) --strip-unneeded $(TARGET_OUT_INTERMEDIATES)/prebuilts/WCN1314_rf/WCN1314_rf.ko $(TARGET_ROOT_OUT)/lib/modules/volans/WCN1314_rf.ko
 TARGET_KERNEL_MODULES += PREBUILT_WLAN_MODULES
 
@@ -168,6 +167,7 @@ BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+TARGET_CUSTOM_WIFI := ../../device/lge/p715/libhardware_legacy/wifi/wifi.c
 WIFI_EXT_MODULE_PATH             := "/system/lib/modules/librasdioif.ko"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
 WIFI_EXT_MODULE_NAME             := "librasdioif"

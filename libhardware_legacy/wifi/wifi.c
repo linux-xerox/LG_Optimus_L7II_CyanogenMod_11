@@ -133,6 +133,8 @@ static const char P2P_CONFIG_FILE[]     = "/data/misc/wifi/p2p_supplicant.conf";
 static const char CONTROL_IFACE_PATH[]  = "/data/misc/wifi/sockets";
 static const char MODULE_FILE[]         = "/proc/modules";
 
+static const char DRIVER_PROP_PARAM[] = "wlan.driver.arg";
+
 static const char IFNAME[]              = "IFNAME=";
 #define IFNAMELEN			(sizeof(IFNAME) - 1)
 static const char WPA_EVENT_IGNORE[]    = "CTRL-EVENT-IGNORE ";
@@ -277,6 +279,8 @@ int wifi_load_driver()
 #ifdef WIFI_DRIVER_MODULE_PATH
     char driver_status[PROPERTY_VALUE_MAX];
     int count = 100; /* wait at most 20 seconds for completion */
+    char module_arg[256];
+    char module_param[PROPERTY_VALUE_MAX];
     char module_arg2[256];
 #ifdef SAMSUNG_WIFI
     char* type = get_samsung_wifi_type();
@@ -292,13 +296,16 @@ int wifi_load_driver()
 
     property_set(DRIVER_PROP_NAME, "loading");
 
-#ifdef WIFI_EXT_MODULE_PATH 
+#ifdef WIFI_EXT_MODULE_PATH
     if (insmod(EXT_MODULE_PATH, EXT_MODULE_ARG) < 0)
         return -1;
     usleep(200000);
 #endif
 
-    if (insmod(DRIVER_MODULE_PATH, DRIVER_MODULE_ARG) < 0) {
+    property_get(DRIVER_PROP_PARAM, module_param, NULL);
+    sprintf(module_arg, "%s %s", DRIVER_MODULE_ARG, module_param);
+
+    if (insmod(DRIVER_MODULE_PATH, module_arg) < 0) {
 #endif
 
 #ifdef WIFI_EXT_MODULE_NAME
@@ -840,11 +847,11 @@ int wifi_start_supplicant(int p2p_supported)
     }
 #endif
 
-#ifdef DRIVER_MODULE_NAME
-    /* The WCN1314 driver needs the interface up in order to scan! */
-    if (strncmp(DRIVER_MODULE_NAME, "WCN1314_rf", 11) == 0) {
+#ifdef WIFI_DRIVER_MODULE_PATH
+    /* The ar6k driver needs the interface up in order to scan! */
+    if (!strncmp(DRIVER_MODULE_NAME, "ar6000", 6)) {
         ifc_init();
-        ifc_up("wlan0");
+        ifc_up("eth0");
         sleep(2);
     }
 #endif
@@ -897,13 +904,6 @@ int wifi_stop_supplicant(int p2p_supported)
         && strcmp(supp_status, "stopped") == 0) {
         return 0;
     }
-
-#ifdef USES_TI_MAC80211
-    if (p2p_supported && add_remove_p2p_interface(0) < 0) {
-        ALOGE("Wi-Fi - could not remove p2p interface");
-        return -1;
-    }
-#endif
 
     property_set("ctl.stop", supplicant_name);
     sched_yield();

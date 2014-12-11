@@ -60,11 +60,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/config/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/config/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    $(LOCAL_PATH)/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf 
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -79,15 +75,22 @@ PRODUCT_COPY_FILES += \
 
 # Wlan
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wlan/wlan.ko:system/lib/modules/wlan.ko \
+    device/lge/p715/config/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
+    device/lge/p715/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/lge/p715/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
+# Wlan
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_wlan_nv.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_wlan_nv.bin \
-    $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_fw.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_fw.bin \
-    $(LOCAL_PATH)/wlan/firmware/WCN1314_cfg.dat:system/etc/firmware/wlan/volans/WCN1314_cfg.dat \
     $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_cfg.ini:system/etc/firmware/wlan/volans/WCN1314_qcom_cfg.ini
 
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+
+# SIM
+PRODUCT_PACKAGES += \
+    Stk 
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -192,13 +195,6 @@ PRODUCT_COPY_FILES += \
 
 # Enable Torch
 PRODUCT_PACKAGES += Torch
-
-# Wifi
-PRODUCT_PACKAGES += \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf \
-    wpa_supplicant.conf \
-    p2p_supplicant.conf 
 
 # TWRP
 PRODUCT_COPY_FILES += \
