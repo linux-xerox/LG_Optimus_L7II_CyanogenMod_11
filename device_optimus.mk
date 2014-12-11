@@ -217,6 +217,7 @@ PRODUCT_COPY_FILES += \
 	device/lge/p715/ramdisk/init.vee7.rc:root/init.vee7.rc \
 	device/lge/p715/ramdisk/init.vee7.usb.rc:root/init.vee7.usb.rc \
 	device/lge/p715/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
+        device/lge/p715/ramdisk/init.lge.p713.rc:root/init.lge.p713.rc \
 	device/lge/p715/ramdisk/init.recovery.qcom.rc:root/init.recovery.qcom.rc 
 
 # Init scripts

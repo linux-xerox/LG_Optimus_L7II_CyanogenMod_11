@@ -27,6 +27,8 @@
 
 import init.qcom.usb.rc
 import init.target.rc
+import init.lge.p713.rc
+import sensors.weritos.rc
 
 on init
     # Set permissions for persist partition
