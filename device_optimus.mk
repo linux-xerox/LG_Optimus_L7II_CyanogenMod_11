@@ -86,7 +86,7 @@ PRODUCT_COPY_FILES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
+    com.android.future.usb.accessory 
 
 # SIM
 PRODUCT_PACKAGES += \
