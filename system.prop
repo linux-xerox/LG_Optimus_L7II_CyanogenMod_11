@@ -32,7 +32,13 @@ ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=16 
 persist.radio.apm_sim_not_pwdn=1  
 persist.sys.usb.config=mtp,adb 
-wlan.driver.ath=1 
+
+#
+# Multi Sim Enabled
+#
+persist.multisim.config=dsds
+persist.radio.multisim.config=dsds
+ro.multi.rild=true
 
 ro.bluetooth.remote.autoconnect=true 
 ro.bluetooth.request.master=true 
@@ -196,9 +202,6 @@ lge.hw.frontkeyled=true
 
 ro.sys.fw.bg_apps_limit=20
 
-#
-# ADDITIONAL_BUILD_PROPERTIES
-#
 net.dns1=8.8.8.8
 net.dns2-8.8.4.4
 keyguard.no_require_sim=true
