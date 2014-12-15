@@ -67,22 +67,53 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml
 
-# SoftAP
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-    $(LOCAL_PATH)/config/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
-    $(LOCAL_PATH)/config/hostapd/hostapd_default.conf::system/etc/hostapd/hostapd_default.conf
 
-# Wlan
+# Wifi
 PRODUCT_COPY_FILES += \
-    device/lge/p715/config/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    device/lge/p715/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/lge/p715/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(LOCAL_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
-# Wlan
+# Wifi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_wlan_nv.bin:system/etc/firmware/wlan/volans/WCN1314_qcom_wlan_nv.bin \
-    $(LOCAL_PATH)/wlan/firmware/WCN1314_qcom_cfg.ini:system/etc/firmware/wlan/volans/WCN1314_qcom_cfg.ini
+    $(LOCAL_PATH)/prebuilt/wlan.ko:system/lib/modules/wlan.ko
+
+# Ramdisk
+PRODUCT_COPY_FILES += \
+	device/lge/p715/ramdisk/fstab.vee7:root/fstab.vee7 \
+ 	device/lge/p715/ramdisk/init.vee7.rc:root/init.vee7.rc \
+	device/lge/p715/ramdisk/ueventd.vee7.rc:root/ueventd.vee7.rc \
+	device/lge/p715/ramdisk/init.lge.p713.rc:root/init.lge.p713.rc \
+	device/lge/p715/ramdisk/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+	device/lge/p715/ramdisk/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+	device/lge/p715/ramdisk/init.qcom.rc:root/init.qcom.rc \
+	device/lge/p715/ramdisk/init.qcom.ril.path.sh:root/init.qcom.ril.path.sh \
+	device/lge/p715/ramdisk/init.qcom.sh:root/init.qcom.sh \
+	device/lge/p715/ramdisk/init.qcom.usb.sh:root/init.qcom.usb.sh \
+	device/lge/p715/ramdisk/init.target.rc:root/init.target.rc \
+	device/lge/p715/ramdisk/init.trace.rc:root/init.trace.rc \
+	device/lge/p715/ramdisk/init.trace.rc:root/init.trace.rc \
+	device/lge/p715/ramdisk/init.usb.rc:root/init.usb.rc \
+	device/lge/p715/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
+	device/lge/p715/ramdisk/ueventd.rc:root/ueventd.rc 
+
+
+# SoftAP files 
+PRODUCT_PACKAGES += \
+    hostapd.accept \
+    hostapd.deny \
+    hostapd_default.conf 
+
+PRODUCT_PACKAGES += \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf
+
+PRODUCT_PACKAGES += \
+    libQWiFiSoftApCfg
+
+PRODUCT_PACKAGES += \
+    WCN1314_qcom_wlan_nv.bin \
+    WCN1314_qcom_fw.bin \
+    WCN1314_cfg.dat \
+    WCN1314_qcom_cfg.ini
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -200,35 +231,13 @@ PRODUCT_PACKAGES += Torch
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
-# Ramdisk
-PRODUCT_COPY_FILES += \
-	device/lge/p715/ramdisk/fstab.vee7:root/fstab.vee7 \
-	device/lge/p715/ramdisk/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
-	device/lge/p715/ramdisk/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
-	device/lge/p715/ramdisk/init.qcom.rc:root/init.qcom.rc \
-	device/lge/p715/ramdisk/init.qcom.ril.path.sh:root/init.qcom.ril.path.sh \
-	device/lge/p715/ramdisk/init.qcom.sh:root/init.qcom.sh \
-	device/lge/p715/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
-	device/lge/p715/ramdisk/init.qcom.usb.sh:root/init.qcom.usb.sh \
-	device/lge/p715/ramdisk/init.superuser.rc:root/init.superuser.rc \
-	device/lge/p715/ramdisk/init.target.rc:root/init.target.rc \
-	device/lge/p715/ramdisk/init.trace.rc:root/init.trace.rc \
-	device/lge/p715/ramdisk/init.usb.rc:root/init.usb.rc \
-	device/lge/p715/ramdisk/init.vee7.rc:root/init.vee7.rc \
-	device/lge/p715/ramdisk/init.vee7.usb.rc:root/init.vee7.usb.rc \
-	device/lge/p715/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
-        device/lge/p715/ramdisk/init.lge.p713.rc:root/init.lge.p713.rc \
-        device/lge/p715/ramdisk/init.sensors.weritos.rc:root/init.sensors.weritos.rc \
-	device/lge/p715/ramdisk/init.recovery.qcom.rc:root/init.recovery.qcom.rc 
-
-# Init scripts
 PRODUCT_PACKAGES += \
+    init.target.rc \
+    init.lge.usb.rc \
     init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
-    init.target.8x25.sh \
-    thermald_conf.sh \
-    thermald-8x25-msm1-pmic_therm.conf \
-    thermald-LG.conf 
+    init.qcom.efs.sync.sh \
+    init.lge.target.sh \
+    init.qcom.baseband.sh 
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \

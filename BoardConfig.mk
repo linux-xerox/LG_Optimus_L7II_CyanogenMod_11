@@ -54,20 +54,12 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno203
 BOARD_USES_ADRENO_200 := true
 
 # Inline kernel building
-TARGET_KERNEL_SOURCE := kernel/lg/p715/kernel
-TARGET_KERNEL_CONFIG := Cyanogenmod_11_vee7_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/p715/kernel
+TARGET_KERNEL_CONFIG := cyanogenmod_11_vee7_defconfig
 BOARD_KERNEL_BASE    :=  0x00200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset  0x01200000
 BOARD_KERNEL_PAGESIZE := 4096
 #Spare size is (BOARD_KERNEL_PAGESIZE>>9)*16
-
-KERNEL_EXTERNAL_MODULES:
-	mkdir -p $(KERNEL_MODULES_OUT)/volans
-	rm -rf $(TARGET_OUT_INTERMEDIATES)/prebuilts
-	cp -a /lib/modules/volans/WCN1314_rf.ko $(TARGET_OUT_INTERMEDIATES)/
-	$(MAKE) -C $(TARGET_OUT_INTERMEDIATES)/prebuilts/WCN1314_rf KERNEL_OUT=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" modules
-	$(TARGET_OBJCOPY) --strip-unneeded $(TARGET_OUT_INTERMEDIATES)/prebuilts/WCN1314_rf/WCN1314_rf.ko $(TARGET_ROOT_OUT)/lib/modules/volans/WCN1314_rf.ko
-TARGET_KERNEL_MODULES += PREBUILT_WLAN_MODULES
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -159,6 +151,7 @@ ENABLE_WEBGL := true
 # PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 TARGET_FORCE_CPU_UPLOAD := true
 
+# Wi-Fi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_HAS_QCOM_WLAN_SDK          := true
 BOARD_WLAN_DEVICE                := qcwcn
@@ -167,7 +160,6 @@ BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-TARGET_CUSTOM_WIFI := ../../device/lge/p715/libhardware_legacy/wifi/wifi.c
 WIFI_EXT_MODULE_PATH             := "/system/lib/modules/librasdioif.ko"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
 WIFI_EXT_MODULE_NAME             := "librasdioif"
@@ -176,6 +168,7 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WIFI_DRIVER_FW_PATH_PARAM        := "/data/misc/wifi/fwpath"
+BOARD_LEGACY_NL80211_STA_EVENTS  := true
 
 # Recovery
 TW_BOARD_CUSTOM_GRAPHICS := ../../../device/lge/p715/recovery/tw_graphics.c
