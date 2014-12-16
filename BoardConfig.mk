@@ -55,7 +55,9 @@ BOARD_USES_ADRENO_200 := true
 
 # Inline kernel building
 TARGET_KERNEL_SOURCE := kernel/lge/p715/kernel
-TARGET_KERNEL_CONFIG := cyanogenmod_11_vee7_defconfig
+# TARGET_KERNEL_CONFIG := cyanogenmod_11_vee7_p715_defconfig
+# TARGET_KERNEL_CONFIG := cyanogenmod_11_vee7_p713_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_11_vee7_nfc_defconfig
 BOARD_KERNEL_BASE    :=  0x00200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset  0x01200000
 BOARD_KERNEL_PAGESIZE := 4096
