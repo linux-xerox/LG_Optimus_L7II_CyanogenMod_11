@@ -29,6 +29,7 @@ import init.lge.rc
 import init.lge.usb.rc
 import init.target.rc
 import init.lge.p713.rc
+import init.leds.nfc.rc
 
 #LGE_CHANGE_S [satya.kamasali@lge.com] 20121008:MPT Partition
 on init

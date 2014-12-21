@@ -1,5 +1,5 @@
 #
-# system.prop for P715 by Weritos
+# system.prop for P713 by Weritos
 #
 #
 # RIL
@@ -32,20 +32,6 @@ ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=16 
 persist.radio.apm_sim_not_pwdn=1  
 persist.sys.usb.config=mtp,adb 
-
-#
-# RIL DUAL SIM
-#
-persist.multisim.config=dsds
-persist.radio.multisim.config=dsds
-ro.multi.rild=true
-
-ro.bluetooth.remote.autoconnect=true 
-ro.bluetooth.request.master=true 
-ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr 
-ro.qualcomm.bluetooth.dun=true 
-ro.qualcomm.bluetooth.ftp=true
-
 #
 # system props for the MM modules
 #
@@ -259,4 +245,3 @@ dalvik.vm.dexopt-flags=m=y
 net.bt.name=Weritos
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 persist.fuse_sdcard=true
-
