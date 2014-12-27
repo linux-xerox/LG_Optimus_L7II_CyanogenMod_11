@@ -49,6 +49,7 @@ frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/
 
 # Config
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/config/AudioFilter.csv:system/etc/AudioFilter.csv \
     $(LOCAL_PATH)/config/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
@@ -116,18 +117,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.primary.msm7x27a \
-    audio_policy.conf \
-    audio_policy.msm7x27a \
-    audio.r_submix.default \
     audio.usb.default \
-    libaudioparameter \
-    libaudio-resampler \
-    libtinyalsa \
-    tinycap \
-    tinymix \
-    tinyplay
-    
-# display HALS
+    audio_policy.msm7x27a \
+    libaudioutils
+
+# Display
 PRODUCT_PACKAGES += \
     libgenlock \
     gralloc.msm7x27a \
@@ -136,9 +130,12 @@ PRODUCT_PACKAGES += \
     memtrack.msm7x27a \
     hwcomposer.msm7x27a
 
-# Camera
+# Wal
 PRODUCT_PACKAGES += \
-    camera.msm7x27a
+    librs_jni \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -190,7 +187,23 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore \
     libstagefrighthw \
-    libdashplayer
+    libc2dcolorconvert \
+    libdivxdrmdecrypt \
+    libdashplayer \
+    libOmxVdec \
+    libOmxVenc \
+    qcmediaplayer
+
+# stagefright cmdline tools
+PRODUCT_PACKAGES += \
+    stagefright \
+    record \
+    recordvideo \
+    audioloop \
+    stream \
+    sf2 \
+    codec \
+    muxer
 
 # Power Hal
 PRODUCT_PACKAGES += \
@@ -219,6 +232,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	ro.adb.secure=0
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fm.analogpath.supported=false \
+    ro.fm.transmitter=false \
+    ro.fm.mulinst.recording.support=false
 
 $(call inherit-product, vendor/lge/p715/p715-vendor.mk)
 

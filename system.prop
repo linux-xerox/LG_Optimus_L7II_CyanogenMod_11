@@ -126,11 +126,6 @@ ro.config.ehrpd=true
 ro.qualcomm.cabl=0
 
 #
-#System property for single instance recording
-#
-ro.fm.mulinst.recording.support=false
-
-#
 # system props for SD card emulation of emmc partition
 #
 
@@ -202,7 +197,6 @@ persist.sys.dun.override=0
 persist.sys.root_access=1
 ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 persist.sys.recovery_update=false
-ro.fm.transmitter=false
 headset.hook.delay=500
 ro.bluetooth.remote.autoconnect=true
 ro.bluetooth.request.master=true
