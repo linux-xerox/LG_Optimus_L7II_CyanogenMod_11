@@ -164,7 +164,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 DISABLE_DEXPREOPT := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/lge/p715/ril/
+# BOARD_RIL_CLASS := ../../../device/lge/p715/ril/
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN              := true
