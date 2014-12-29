@@ -49,17 +49,35 @@ frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/
 
 # Config
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/thermald-8x25-msm1-pmic_therm.conf:system/etc/thermald-8x25-msm1-pmic_therm.conf \
+    $(LOCAL_PATH)/config/thermald-8x25-msm2-msm_therm.conf:system/etc/thermald-8x25-msm2-msm_therm.conf \
+    $(LOCAL_PATH)/config/thermald-8x25-msm2-pmic_therm.conf:system/etc/thermald-8x25-msm2-pmic_therm.conf \
+    $(LOCAL_PATH)/config/init.qcom.thermald_conf.sh:system/etc/init.qcom.thermald_conf.sh \
+    $(LOCAL_PATH)/config/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/config/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/config/AudioFilter.csv:system/etc/AudioFilter.csv \
     $(LOCAL_PATH)/config/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/config/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/config/nexcodec.cfg:system/etc/nexcodec.cfg \
     $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf 
+
+# Brunch
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/brunch_featureinfo.xml:system/etc/brunch_featureinfo.xml \
+    $(LOCAL_PATH)/config/brunch_featureinfo_ex.xml:system/etc/brunch_featureinfo_ex.xml \
+    $(LOCAL_PATH)/config/brunch_featureswitch.xml:system/etc/brunch_featureswitch.xml \
+    $(LOCAL_PATH)/config/brunch_featureswitch_ex.xml:system/etc/brunch_featureswitch_ex.xml \
+    $(LOCAL_PATH)/config/brunch_media_codec_ex.xml:system/etc/brunch_media_codec_ex.xml \
+    $(LOCAL_PATH)/config/brunch_notusedcodecs.xml:system/etc/brunch_notusedcodecs.xml \
+    $(LOCAL_PATH)/config/brunch_notusedcodecs_ex.xml:system/etc/brunch_notusedcodecs_ex.xml \
+    $(LOCAL_PATH)/config/brunch_player_list.xml:system/etc/brunch_player_list.xml \
+    $(LOCAL_PATH)/config/brunch_player_list_ex.xml:system/etc/brunch_player_list_ex.xml 
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/media/media_profiles_7627a.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media/media_codecs_7627a.xml:system/etc/media_codecs.xml
 
 
 # Wifi
@@ -205,7 +223,12 @@ PRODUCT_PACKAGES += \
     codec \
     muxer
 
+# Camera Hal
+# PRODUCT_PACKAGES += \
+#    camera.msm7x27a
+
 # Power Hal
+
 PRODUCT_PACKAGES += \
     power.msm7x27a
 
