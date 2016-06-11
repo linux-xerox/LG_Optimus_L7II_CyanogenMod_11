@@ -29,8 +29,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/lge/p715/device_optimus.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := p714
+PRODUCT_DEVICE := p713
 PRODUCT_NAME := full_lg
 PRODUCT_BRAND := lge
-PRODUCT_MODEL := p714
+PRODUCT_MODEL := p713
 PRODUCT_MANUFACTURER := lge
